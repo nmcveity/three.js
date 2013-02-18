@@ -3678,7 +3678,8 @@ THREE.WebGLRenderer = function ( parameters ) {
 
 				setLineWidth( material.linewidth );
 
-				_gl.drawArrays( _gl.LINE_STRIP, 0, position.numItems / 3 );
+				primitives = ( object.type === THREE.LineStrip ) ? _gl.LINE_STRIP : _gl.LINES;
+				_gl.drawArrays( primitives, 0, position.numItems / 3 );
 
 				_this.info.render.calls ++;
 				_this.info.render.points += position.numItems;
